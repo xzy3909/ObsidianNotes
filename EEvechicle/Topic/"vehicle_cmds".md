@@ -5,3 +5,5 @@ PUB:
 	[[Control.cpp]]
 	[[Net2LocalNodelet.cpp]]
 		operate_MQTT_callback()
+	[[TaskManagerNodelet.cpp]]
+		pub_cmds

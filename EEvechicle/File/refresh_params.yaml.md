@@ -1,0 +1,119 @@
+[[TaskManagerNodelet.cpp]] 
+```YAML
+v_boat_max: 1
+v_boat_min: 0.4
+convey_k: 1
+convey_k_max: 2
+convey_k_min: 0.3
+v_spread_max: 4.7
+v_spread_min: 0.5
+pump_convey_k: 1.691666714350382
+pump_convey_k_max: 1.7
+pump_convey_k_min: 0.01
+v_pump_max: 3.6
+v_pump_min: 0.01
+cores_user: cpef3445
+cores_ip: 120.253.239.161
+cores_port: 8002
+cores_passwd: txr2tp09
+cores_use: false
+cores_mountpoint: RTCM33_GRCEJ
+Delta: 6
+k1: 1.0
+k_max: 0.008
+k_min: 0
+rho: 10
+R_decelerate: 7.5
+cur_R_thresh: 1.0
+dec_vel: 0.2
+max_power: 60
+turn_ref_vel: 0.2
+ref_vel: 1
+PID_K:
+  K_p: 3
+  K_i: 8
+  K_d: 5
+  time_delta: 0.2
+  out_max: 100
+  out_min: -100
+  integral_max: 10
+  integral_min: -10
+  separation_thres: 50
+PID_angle:
+  K_p: 3
+  K_i: 8
+  K_d: 5
+  time_delta: 0.2
+  out_max: 100
+  out_min: -100
+  integral_max: 10
+  integral_min: -10
+  separation_thres: 50
+weight_offset: 0.3
+battery_type: 2
+convey_mode: 1
+enable_trans: false
+is_open_hover: true
+is_task_finish_open_hover: true
+is_open_sir: true
+start_stir_max_weight: 30
+stir: 50
+scatter: 70
+pump_main: 60
+pump_slave: 100
+is_shield_network: false
+is_shield_gps: false
+is_shield_rtk: true
+is_shield_battery: false
+is_shield_state: false
+is_shield_camera: true
+is_shield_ultrasonic_radar: true
+is_shield_imu: false
+is_shield_weight: false
+is_shield_tele_control: true
+is_shield_paddlewheel_left: false
+is_shield_paddlewheel_right: false
+is_shield_transformer: true
+is_shield_stir: false
+is_shield_scatter: false
+is_shield_convey: false
+is_shield_pump_main: true
+is_shield_pump_slave: true
+is_shield_ph: true
+is_shield_temperature: true
+is_shield_dissolved_oxygen: true
+is_shield_vehicle_wheel_left: false
+is_shield_vehicle_wheel_right: false
+is_shield_vehicle_LPR: false
+is_shield_vehicle_TPRLEFT: false
+is_shield_vehicle_TPRRIGHT: false
+is_shield_oil_level: false
+is_shield_water_level: false
+is_shield_humidity: false
+decomposition_type: 0
+cost_function_type: 0
+v_max: 1.0
+a_max: 0.0
+wall_distance: 10.0
+offset_polygons: false
+sweep_single_direction: true
+sensor_model_type: 0
+lateral_overlap: 0.0
+lateral_footprint: 15.0
+lateral_fov: 0.84
+is_open_avoid: true
+main_antenna_rel_x: 0.5
+main_antenna_rel_y: 0.6
+hardware_version: PMW2_O1_V2.0
+software_version: v2.0.0
+update_all: false
+update_ros: true
+update_mcu: false
+is_clear_update_params: false
+obsKeepDistance: 20
+obsEffectDistance: 30
+velocityMax: 1.1
+velocityMin: 0.1
+velocityBack: -0.5
+voltage_coefficient: 1.0
+```
