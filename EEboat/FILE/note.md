@@ -1,0 +1,21 @@
+传入方式:
+	1. 在创建BoatParam[[BoatParam.cpp]]的类时候， 会执行BoatParam::LoadParameters(nh), 调用多个getParam传递json路径
+	2. 后续直接访问boat_param_ptr或是LoadParamsPtr(boat_param_ptr)来访问参数
+"task_path"
+	"$(find boat_control)/files_path/Task_path.json"
+"resume_path"
+	"$(find boat_control)/files_path/Resume_path.json"
+"return_path"
+	"$(find boat_control)/files_path/Return_path.json"
+"params_config"
+	"$(find boat_control)/config/params_config.yaml"
+"refresh_file"
+	"$(find boat_control)/config/refresh_params.yaml"
+"update_file"
+	"$(find boat_control)/config/update_params.yaml"
+"adding_task"
+	"$(find boat_control)/files_path/AddingTasks.json"
+"feed_planner_path"
+	"$(find boat_control)/files_path/feedPlanner.json"
+"exceptionConfig"
+	"$(find boat_control)/config/exceptionConfig.json"

@@ -1,0 +1,7 @@
+DES:
+	连续发送指令，主要用于升降杆及推杆的控制
+SUB:
+PUB:
+	[[Control.cpp]]
+	[[Net2LocalNodelet.cpp]]
+		operate_MQTT_callback()

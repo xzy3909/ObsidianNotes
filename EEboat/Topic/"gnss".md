@@ -1,0 +1,15 @@
+DES:
+	处理后的gps数据
+PUB:
+	[[Location.cpp]]
+		gpsCallback()
+			处理"gnss_raw"并发布
+SUB:
+	[[NavigationNodelet]]
+			gpsCallback()
+	[[Info2NetNodelet.cpp]]
+		callback_gps()
+	[[StateManager.cpp]]
+		gpsStateCallback()
+	[[Path2AppNodelet.cpp]]
+		gps_callback()

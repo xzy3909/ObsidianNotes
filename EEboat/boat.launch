@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<launch>
+  <env name="LogFolder" value="/home/aszn/Log"/>
+  <env name="LogThreshold" value="DEBUG"/>
+  <env name="ROSCONSOLE_CONFIG_FILE" value="$(find boat_control)/config/LogConfig.conf"/>
+
+  <!--output="screen"-->
+  <include file="$(find tele_comm)/launch/tele_comm.launch"/>
+
+  <arg name="nav_output" default="csv"/> 
+  <arg name="state_output" default="csv"/> 
+  <arg name="location_output" default="csv"/> 
+  <!-- <param name="output" default="$(arg log_output)"/> -->
+  <!-- <arg name="log_output" default="csv"/>  -->
+  <arg name="task_path" default="$(find boat_control)/files_path/Task_path.json"/>
+  <arg name="resume_path" default="$(find boat_control)/files_path/Resume_path.json"/>
+  <arg name="return_path" default="$(find boat_control)/files_path/Return_path.json"/>
+  <arg name="params_config" default="$(find boat_control)/config/params_config.yaml"/>
+  <arg name="refresh_file" default="$(find boat_control)/config/refresh_params.yaml"/>
+  <arg name="update_file" default="$(find boat_control)/config/update_params.yaml"/>
+  <arg name="adding_task" default="$(find boat_control)/files_path/AddingTasks.json"/>
+  <arg name="feed_planner_path" default="$(find boat_control)/files_path/feedPlanner.json"/>
+  <arg name="exceptionConfig" default="$(find boat_control)/config/exceptionConfig.json"/>
+
+  <!-- <node pkg="nodelet" type="nodelet" name="CmdSpeedManageNodelet" args="standalone boat_control/CmdSpeedManageNodelet" output="screen" respawn="true"/> -->
+  <node pkg="nodelet" type="nodelet" name="NavigationNodelet" args="standalone navigation/NavigationNodelet" output="screen" respawn="true">
+    <rosparam command="load" file="$(find boat_control)/config/params_config.yaml" />
+    <param name="log_output" type="string" value="$(arg nav_output)"/>
+    <param name="task_path" type="string" value="$(arg task_path)"/>
+    <param name="return_path" type="string" value="$(arg return_path)"/>
+    <param name="refresh_file" type="string" value="$(arg refresh_file)"/>
+    <param name="update_file" type="string" value="$(arg update_file)"/>
+    <param name="resume_path" type="string" value="$(arg resume_path)"/>
+    <param name="adding_task" type="string" value="$(arg adding_task)"/>
+    <param name="feed_planner_path" type="string" value="$(arg feed_planner_path)"/>
+  </node>
+  <node pkg="nodelet" type="nodelet" name="StateManager" args="standalone state_manager/StateManager" output="screen" respawn="true">
+    <param name="log_output" type="string" value="$(arg state_output)"/>
+    <param name="task_path" type="string" value="$(arg task_path)"/>
+    <param name="refresh_file" type="string" value="$(arg refresh_file)"/>
+    <param name="update_file" type="string" value="$(arg update_file)"/>
+    <param name="exceptionConfig" type="string" value="$(arg exceptionConfig)"/>
+  </node>
+  <node pkg="nodelet" type="nodelet" name="Location" args="standalone location/Location" output="screen" respawn="true">
+    <param name="log_output" type="string" value="$(arg location_output)"/>
+    <param name="params_config" type="string" value="$(arg params_config)"/>
+    <param name="refresh_file" type="string" value="$(arg refresh_file)"/>
+    <param name="update_file" type="string" value="$(arg update_file)"/>
+  </node>
+  <!-- <node name="coverage_planner" pkg="polygon_coverage_ros" type="coverage_planner" output="screen" respawn="true" clear_params="true"> -->
+
+    <!-- <rosparam command="load" file="$(find polygon_coverage_ros)/cfg/coverage_planner.yaml"/> -->
+    <!-- Polygon, altitude, and world frame ID -->
+    <!-- <rosparam command="load" file="$(find polygon_coverage_ros)/cfg/polygons/example_polygon_epfl_simple.yaml"/> -->
+    <!-- <rosparam command="load" file="$(find polygon_coverage_ros)/cfg/polygons/example_polygon_epfl_trivial.yaml"/> -->
+
+  <!-- </node> -->
+  
+  <!-- <node pkg="pic_follow" type="pic_follow_node" name="avoidNode" output="screen" respawn="true">
+    <param name="refresh_file" type="string" value="$(arg refresh_file)"/>
+    <param name="update_file" type="string" value="$(arg update_file)"/>
+    <param name="task_path" type="string" value="$(arg task_path)"/>
+  </node> -->
+
+  <!-- <node pkg="start_cv" type="deploy_pub_flag.py" name="points_publisher" respawn="true" /> -->
+  <include file="$(find gps_rtk)/launch/gnss.launch"/>
+  <node pkg="rosserial_python" type="serial_node.py" name="serial_node" respawn="true">
+    <param name="port" value="/dev/mcu"/>
+    <param name="baud" value="500000"/>
+  </node>
+
+  <include file="$(find boat_control)/launch/localization.launch"/>
+  <node pkg="boat_control" type="imuconvert" name="imuconvert" output="screen"/>
+
+  <node pkg="tf2_ros" type="static_transform_publisher" name="base2imu" args="1.0 0 0.2 0 0 0 base_link laser_link"/>
+
+  <!-- 激光雷达硬件 -->
+  <include file="$(find lslidar_driver)/launch/lslidar_serial.launch"/>
+  <!-- 激光雷达里程计 -->
+  <include file="$(find laser_scan_matcher)/launch/usv_slam.launch"/>
+
+
+</launch>
