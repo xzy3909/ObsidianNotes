@@ -1,5 +1,7 @@
 DES:
 CLI:
-DRV:
+	[[StateManager.cpp]]
+		nav_client_
+SRV:
 	[[ControlNodelet.cpp]]
 		ExceptionPorcess()
