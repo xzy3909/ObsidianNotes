@@ -1,5 +1,15 @@
 DES:
+	根据
+		START
+		PAUSE
+		RECOVER
+		END
+		FINISH
+	调用对应的nav函数
 CLI:
 	[[TaskManagerNodelet.cpp]]
+		callNav
 		client_nav_
 SRV:
+	[[NavNodelet.cpp]]
+		NavInterfaces

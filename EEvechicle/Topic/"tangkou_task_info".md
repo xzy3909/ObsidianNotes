@@ -3,5 +3,8 @@ SUB:
 	[[TaskManagerNodelet.cpp]]
 		tangkouInfoCallback()
 	[[StateManager.cpp]]
-		tangkouInfoCallback()
+		tangkouInfoCallback()-todo
 PUB:
+	NavNodelet.cpp
+		timerCallback()
+			pub_tangkou_info()

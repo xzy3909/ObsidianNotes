@@ -3,5 +3,8 @@ CLI:
 	[[TaskManagerNodelet.cpp]]
 		client_hovering
 	[[StateManager.cpp]]
-		hovering_client_
+		start_hovering()
+		stop_hovering()
+			hovering_client_
 SRV:
+	NavgationNodelet.cpp

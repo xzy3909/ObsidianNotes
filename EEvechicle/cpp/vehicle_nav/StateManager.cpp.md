@@ -1,4 +1,7 @@
-what is error_warning_map?????
+vehicle_state????全局状态变量有哪些，是否重复????
+	-------->error_warning_map记录 油位水位温度湿度，左右履带三推杆????
+	-------->vehicle_state记录剩余信息???那些???
+exceptionThreshold传感器异常阈值
 Fuction:
 1. onInit()
 	DES:初始化
@@ -19,6 +22,8 @@ Fuction:
 			用于更新isheartbeatFlag
 		cleaConfigTime_
 			调用clearExceptionConfig
+		error_warning_map
+			将故障传递backgroundexceptionData变量
 	OUT:
 		isheartbeatFlag
 		clearExceptionConfig():
@@ -76,14 +81,67 @@ Fuction:
 	OUT:
 		res.State
 10. statusCallback()
-
+	DES:
+		[["vehicle_status"]]回调函数，获取auto_state和state_cmd
+	IN:
+		&status
+	OUT:
+		vehicle_state
+			.LAST_STATE
+			.LAST_CMD
+		if(isCommSerialError)
+			rest;
+				error_warning_map
+				issensorWarning
+				issensorError
 11. equipmentStatusCallback()
-12. tangkouInfoCallback()
+	DES:
+		获取油位、水位、温度、湿度信息[["vehicle_equipment_status_error"]] 
+	IN:
+		&status
+	OUT:
+		error_warning_map.emplace
+			OIL_LEVEL
+			WATER_LEVEL
+			TEMPERATURE
+			HUMIDITY
+12. tangkouInfoCallback()-todo
+	DES:
+		塘口信息回调函数[["tangkou_task_info"]] 
+	IN:
+		&msg
+	OUT:
+		auto_state = 1
+		tangkou_info = *msg
 13. underpowerCallback()
+	DES:
+		[["ros2mqtt_under_power"]] 回调函数
+	IN:
+		&msg
+	OUT:
+		underPowerData
 14. understatusCallback()
+	DES:
+		[["ros2mqtt_under_status"]]回调函数
+			获取电量
+	IN:
+		&msg
+	OUT:
+		vehicle_state
+			.BATTERY
 15. gpsStateCallback()
+	DES:
+		[["gnss"]]回调函数，获取速度cur_vel，GPS状态
+	IN:
+		&gnss
+	OUT:
+		cur_vel
+		vehicle_state
+			.GPS
+		GPSStatus
 16. stateCheckCallback()
 	DES:
+		单个状态回调函数
 		[["vehicles_statecheck"]]回调函数，将下位机状态赋值给vehicle_state，vehicle_error
 	IN:
 		&msg
@@ -91,19 +149,72 @@ Fuction:
 		vehicle_state
 		vehicle_error
 17. stateChecksCallback()
-18. isEnableTask()
-19. exceptionProcess()
+	DES:
+		多个状态回调函数
+		[["vehicle_statechecks_error"]] 
+	IN:
+		&msg
+	OUT:
+		vehicle_state
+		vehicle_error
+		vehicle_warning
+		isEnableTask()
+			检查异常，尝试调用作业，上发异常
+		exceptionProcess()
+			检查异常，执行就近任务返航
+18. isEnableTask()--???--逻辑流程
+	DES:
+		在stateChecksCallback()中被调用
+			检查异常并尝试调用[["task_exception_handler"]]和[["control_exception_handler"]] 服务
+	IN:
+		遍历vehicle_warning中的履带推杆信息
+		NetWorkStatus
+		GPSStatus
+		BATTERYStatus
+		sensorError
+	OUT:
+		pubExceptionStatus
+		[["task_exception_handler"]] 
+		[["control_exception_handler"]] 
+19. exceptionProcess()--???--逻辑流程
+	DES:
+		检查异常，有异常则执行就近任务返航
+	IN:
+		vehicle_state
+		stateErrorcount
+	OUT:
 20. callExceptionProcessSrv()
 	DES:
-		服务调用封装
+		服务调用封装，异常处理接口
 	IN:
 		&exception_client
 		&exception_cmd
 	OUT:
 		client.call(cmd)
 21. isStateError()
+	DES:
+		在isEnableTask()和exceptionProcess()中被调用
+			检查状态返回标志位isError
+	IN:
+		&vehicle_state, const int &id
+	OUT:
+		isError标志位-(stm32，电机，油位水位)
 22. pubExceptionStatus()
+	DES:
+		异常上发函数[["ros2mqtt_under_exception"]] 
+			在timerCallback(),NetWorkStateCallback(),isEnableTask(),exceptionProcess()中被调用
+	IN:
+		&exceptionstatus
+	OUT:
+		pub_under_exception_.publish(exception_msg);
 23. loadExceptionConfig()
+	DES:
+		加载异常数据到全局变量
+		在onInit中被调用，加载[[exceptionConfig.json]] 
+	IN:
+		[[exceptionConfig.json]] / &filename /refresh_file/update_file
+	OUT:
+		LoadParameters()
 24. clearExceptionConfig()
 	DES:
 		读取[[exceptionConfig.json]]
@@ -121,7 +232,13 @@ Fuction:
 		 file_path/[[refresh_params.yaml]]
 	OUT:
 		[[exceptionConfig.json]] 
-26. loadMinPowerForTask()
+26. loadMinPowerForTask()---UnUse
+	DES:
+		根据行驶任务历程，判断当前剩余电量是否具备工作条件
+	IN:
+		task_path[[Task_path.json]]
+	OUT:
+		remainPower
 Relation:
 	Topic:
 		SUB:

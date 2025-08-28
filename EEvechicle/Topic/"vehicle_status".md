@@ -4,4 +4,6 @@ SUB:
 		callback_status()
 	[[StateManager.cpp]]
 		statusCallback()
+	[[Info2NetNodelet.cpp]]
+		callback_status()
 PUB:

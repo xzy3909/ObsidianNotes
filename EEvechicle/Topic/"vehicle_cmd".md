@@ -1,10 +1,13 @@
 DES:
 SUB:
+	--->STM32
 PUB:
 	[[ControlNodelet.cpp]]
 		cmdVelCallback()
 	[[Control.cpp]]
 	[[TaskManagerNodelet.cpp]]
 		pub_cmd
-	
-	
+	[[TaskManagerNodelet.cpp]]
+		taskCmd()
+	[[Net2LocalNodelet.cpp]]
+		move_MQTT_callback()

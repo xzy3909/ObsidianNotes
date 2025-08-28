@@ -4,4 +4,9 @@ SUB:
 		gpsCallback()
 	[[TaskManagerNodelet.cpp]]
 		callback_gps()
+	[[StateManager.cpp]]
+		gpsStateCallback()
+	[[Info2NetNodelet.cpp]]
+		callback_gps
 PUB:
+	Location.cpp
