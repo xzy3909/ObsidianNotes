@@ -1,3 +1,4 @@
+https://en.wikipedia.org/wiki/Extended_Kalman_filter
 预测流程`predict` 
 1. 准备控制量prepareControl(const double referenceTime, const double delta)
 	根据目标速度，设置对应的加速度和限副
@@ -77,3 +78,5 @@
 		在观测中计算卡尔曼增益$K$，并根据观测增量$innovation$对状态 $\mathbf{x}$ 进行校准
 			$x=x+K*innovation$ 
 			$状态(x) = 状态(x) + 卡尔曼增益(K) * 观测增量(innovation)$ 
+
+代码流程及参数与数据传递[[数据传递]] 
