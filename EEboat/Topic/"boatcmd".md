@@ -3,4 +3,4 @@ DES:
 SUB:
 PUB:
 	[[NavigationNodelet.cpp]]
-	
+	[[TaskManagerNodelet.cpp]] 

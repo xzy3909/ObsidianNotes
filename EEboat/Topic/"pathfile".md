@@ -5,3 +5,5 @@ SUB:
 		pathfileCallback
 	std::shared_ptr<ros::Subscriber> pathfile_sub = std::make_shared<ros::Subscriber>(nh.subscribe("pathfile", 1, &NavigationNodelet::, this));
 PUB:
+	[[TaskManagerNodelet.cpp]]
+		taskStart()

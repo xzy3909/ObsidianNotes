@@ -1,112 +1,70 @@
 {
   "main": {
-    "id": "1ec8e30c1e6cb0a1",
+    "id": "d91091e0f2ec5a58",
     "type": "split",
     "children": [
       {
-        "id": "9b326ba99c18bf3e",
+        "id": "337d7f5d37f02ec8",
         "type": "tabs",
         "children": [
           {
-            "id": "cf23af564e17e88b",
+            "id": "83a1719ea2e9966a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "EKF算法流程.md",
+                "file": "欢迎.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "EKF算法流程"
+              "title": "欢迎"
             }
           },
           {
-            "id": "2397bd2913afbfbf",
+            "id": "e8b8f767d16e68cd",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "数据传递.md",
+                "file": "clangd.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "数据传递"
+              "title": "clangd"
             }
           },
           {
-            "id": "df71e90d9e617a5e",
+            "id": "d73032f0f61e962e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "navsat_transform.cpp.md",
+                "file": "clangd.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "navsat_transform.cpp"
-            }
-          },
-          {
-            "id": "4fbc38c18623f3e7",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ros_filter.cpp.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "ros_filter.cpp"
-            }
-          },
-          {
-            "id": "69bdfdd08e1d0768",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "EKF算法流程.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "EKF算法流程"
-            }
-          },
-          {
-            "id": "1a90cecda2ffdf96",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "齐次变换.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "齐次变换"
+              "title": "clangd"
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "b9beec677890ac00",
+    "id": "adee00786048ba2e",
     "type": "split",
     "children": [
       {
-        "id": "4a277ea96bf07452",
+        "id": "96315d6aa08bddfc",
         "type": "tabs",
         "children": [
           {
-            "id": "760707381aafc0b1",
+            "id": "b152f0f8c6925385",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -119,7 +77,7 @@
             }
           },
           {
-            "id": "0754402ae47cb04d",
+            "id": "ddf0df689e1b8707",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -136,7 +94,7 @@
             }
           },
           {
-            "id": "48d451ea7e5f1a65",
+            "id": "304186b88d959ad8",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -149,23 +107,23 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 300
   },
   "right": {
-    "id": "2f0d3e543ed45b98",
+    "id": "3e69fef2907a1667",
     "type": "split",
     "children": [
       {
-        "id": "9e918a4b86c33533",
+        "id": "baab597577c78bf6",
         "type": "tabs",
         "children": [
           {
-            "id": "a14b0bdc1dc4084f",
+            "id": "f2c08c2956ae68da",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "EKF算法流程.md",
+                "file": "clangd.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -175,25 +133,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "EKF算法流程 的反向链接列表"
+              "title": "clangd 的反向链接列表"
             }
           },
           {
-            "id": "923d4563c0aafeec",
+            "id": "e65277a0a73ea2b3",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "EKF算法流程.md",
+                "file": "clangd.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "EKF算法流程 的出链列表"
+              "title": "clangd 的出链列表"
             }
           },
           {
-            "id": "e0865110748fa7fb",
+            "id": "980500dc58422d71",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -208,18 +166,18 @@
             }
           },
           {
-            "id": "b9e2966218cce19a",
+            "id": "61d713679f435c47",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "EKF算法流程.md",
+                "file": "clangd.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "EKF算法流程 的大纲"
+              "title": "clangd 的大纲"
             }
           }
         ]
@@ -240,15 +198,10 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "1a90cecda2ffdf96",
+  "active": "d73032f0f61e962e",
   "lastOpenFiles": [
-    "EKF算法流程.md",
-    "齐次变换.md",
-    "ekf_localization_nodelet.cpp.md",
-    "navsat_transform.cpp.md",
-    "ros_filter.cpp.md",
-    "数据传递.md",
-    "卡尔曼增益的计算流程.png",
+    "compile_commands.json.md",
+    "clangd.md",
     "欢迎.md"
   ]
 }

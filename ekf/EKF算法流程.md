@@ -47,7 +47,7 @@ https://en.wikipedia.org/wiki/Extended_Kalman_filter
 	$K = (PH^T) S^{-1}$ 
 		的计算公式可以理解为：$K = \frac{\text{状态和观测的协方差}(PH^T)}{\text{总的不确定性}(S)}$ 
 		若预测值不确定($P$值很大)，传感器非常精确($R$值很小)，则$S \approx R$ 小，--->$K$ 值大，更信任观测值。
-		若预测值精确($P$值小)，传感器噪声大($R$值很大)，则$S$大，--->$K$值小，更信任观测值。
+		若预测值精确($P$值小)，传感器噪声大($R$值很大)，则$S$大，--->$K$值小，更信任预测值。
 	$y = z - H\hat{x}$ 计算新息
 		**观测值与预测值在观测空间中的差值**，它告诉我们当前的预测和实际的测量相差多少，在后续会与卡尔曼增益$K$相乘用于校正
 		`innovationSubset = (measurementSubset - stateSubset);` 

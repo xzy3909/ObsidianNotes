@@ -8,6 +8,7 @@ follow_info->arrived = arrived_flag;
 follow_info->loop_num = loopNum;
 DES:
 SUB:
+	[[TaskManagerNodelet.cpp]] 
 PUB:
 	[[NavigationNodelet.cpp]]
 	
